@@ -2,15 +2,18 @@
 
 Generate documents from MS Docs templates
 
+[Please, see Wiki](https://github.com/rareMaxim/frappe_msdoc_template/wiki)
+
 ### Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
+bench get-app https://github.com/rareMaxim/frappe_msdoc_template --branch develop
 bench install-app frappe_msdoc_template
 ```
+
 
 ### Contributing
 
