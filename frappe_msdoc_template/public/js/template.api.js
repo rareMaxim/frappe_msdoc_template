@@ -1,7 +1,26 @@
+
+
+frappe.router.on("change", page_changed);
+
+function page_changed(event) {
+    frappe.after_ajax(function () {
+        var route = frappe.get_route();
+        if (route[0] == "Form") {
+            frappe.ui.form.on(route[1], {
+                refresh: function (frm) {
+                    build_template_buttons(frm);
+                }
+            })
+        }
+    })
+};
+
+
 /**
  * Builds template buttons on the form.
  * 
  * @param {Object} frm - The form object.
+ * @returns {void} - This function does not return anything.
  */
 function build_template_buttons(frm) {
     frappe.call({
