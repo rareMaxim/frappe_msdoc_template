@@ -19,7 +19,6 @@ class DocumentGenerator:
         templates_info = get_templates(self.doctype)
         for template_info in templates_info:
             if template_info["name"] == self.template_name:
-                frappe.logger().info(template_info)
                 template_file = template_info["template"]
                 # Отримуємо дані з DocType
                 doc = frappe.get_doc(self.doctype, self.docname)
