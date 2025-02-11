@@ -81,19 +81,20 @@ def get_link(template_name, doctype, docname):
 @frappe.whitelist()
 def get_templates(doctype):
     """Повертає список шаблонів для DocType"""
-    doc: DocumentTemplate = frappe.get_last_doc(
-        "Document Template", {"doc_type": doctype})
     result = []
-    if not doc:
-        return []
-    result = []
-    for d in doc.templates:
-        result.append({
-            "title": d.title,
-            "name": d.name,
-            "template": d.template,
-            "group": d.group,
-        })
+    if frappe.db.count("Document Template", {"doc_type": doctype}) > 0:
+        doc: DocumentTemplate = frappe.get_last_doc(
+            "Document Template", {"doc_type": doctype})
+        if not doc:
+            return []
+
+        for d in doc.templates:
+            result.append({
+                "title": d.title,
+                "name": d.name,
+                "template": d.template,
+                "group": d.group,
+            })
     return result
 
 
